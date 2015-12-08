@@ -9,17 +9,16 @@ import json
 
 def ungzip(data):
     try:        # unzip data
-        print('正在解压.....')
         data = gzip.decompress(data)
-        print('解压完毕!')
     except:
-        print('未经压缩, 无需解压')
+        pass
     return data
+
+# deal with cookies
+cj = http.cookiejar.CookieJar()
 
 
 def getOpener(head):
-    # deal with the Cookies
-    cj = http.cookiejar.CookieJar()
     pro = urllib.request.HTTPCookieProcessor(cj)
     opener = urllib.request.build_opener(pro)
     header = []
@@ -49,7 +48,7 @@ def sign(username, password):
         return False
     url += 'User/Login/ajaxLogin'
     postDict = {
-        'account': id,
+        'account': username,
         'password': password,
         'remember': 1,
         'url_back': 'http://www.zimuzu.tv/'
@@ -62,6 +61,7 @@ def sign(username, password):
     if data['status'] != 1:
         print('wrong username or password, login error')
         return False
+    print('登陆成功, 等待签到......')
     url = 'http://www.zimuzu.tv/user/sign'
     op = opener.open(url)
     data = op.read()
@@ -72,11 +72,11 @@ def sign(username, password):
     data = ungzip(data)
     data = json.loads(data.decode('utf-8'))
     if data['status'] == 0:
-        print('sign error, maybe you have already signed today')
+        print('签到失败, 您可能今天已经签过到了')
         return False
     if data['status'] == 1:
         return True
 
 if __name__ == '__main__':
     if sign('your_username', 'your_password'):
-        print('sign success')
+        print('签到成功!')
