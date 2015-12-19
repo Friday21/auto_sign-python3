@@ -26,12 +26,7 @@ def make_my_opener(head=None):
     'Accept-Language': 'en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3',
     'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko',
     'Accept-Encoding': 'gzip, deflate, sdch',
-    'Cookie': 'Iy5o_c91e_saltkey=k11GB8kS; Iy5o_c91e_lastvisit=1450306120; Iy5o_c91e_auth=e35dpA%2FCKdQLUUiHfy6961JZAeI'
-              'i0WmnI7omB0lfevlTvTHj8HUOKgxg0MUxAqqBqZUnajQ4x3yFD5Xj9yk8JjHlqenm; Iy5o_c91e_visitedfid=14; Iy5o_c91e_'
-              'forum_lastvisit=D_14_1450309822; Iy5o_c91e_smile=1D1; Iy5o_c91e_onlineusernum=2688; Iy5o_c91e_sid=49z9zV;'
-              ' Iy5o_c91e_ulastactivity=e30e7eepY37dOV9LY2sYTQkx3SteHw90NcUybzG0waWs4boX8Cbv; Iy5o_c91e_checkpm=1; Iy5o_'
-              'c91e_lastact=1450397120%09home.php%09misc; Iy5o_c91e_sendmail=1; CNZZDATA2690073=cnzz_eid%3D1324583947-14'
-              '42270967-http%253A%252F%252Fbbs.musicool.cn%252F%26ntime%3D1450392407'
+    'Cookie': '此处改为自己登录后的cookie'
         }
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
     header = []
