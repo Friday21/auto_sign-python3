@@ -40,7 +40,12 @@ def make_my_opener(head=None):
 def sign_and_comment():
     oper = make_my_opener()
     op = oper.open('http://bbs.musicool.cn/', timeout=1000)
-    url = 'http://bbs.musicool.cn/forum.php?mod=post&action=reply&fid=14&tid=598441&extra=page%3D1&replysubmit=yes&i' \
+    op = oper.open('http://bbs.musicool.cn/forum-14-1.html', timeout=1000)
+    data = op.read()
+    data = ungzip(data)
+    data = data.decode('gbk')
+    num = re.findall(r'"http://bbs.musicool.cn/thread-(.{1,10})-1-1.html".{1,100}每日幸运数0----9', data)
+    url = 'http://bbs.musicool.cn/forum.php?mod=post&action=reply&fid=14&tid='+str(num[0])+'&extra=page%3D1&replysubmit=yes&i' \
           'nfloat=yes&handlekey=fastpost&inajax=1'
     postDict = {
         'message': '%s            %s' % (random.randint(0, 9), random.randint(0, 9)),
