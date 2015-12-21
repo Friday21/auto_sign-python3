@@ -26,7 +26,7 @@ def make_my_opener(head=None):
     'Accept-Language': 'en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3',
     'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko',
     'Accept-Encoding': 'gzip, deflate, sdch',
-    'Cookie': '此处改为自己登录后的cookie'
+    'Cookie': 'Iy5o_c91e_saltkey=k11GB8kS; Iy5o_c91e_lastvisit=1450306120; Iy5o_c91e_auth=e35dpA%2FCKdQLUUiHfy6961JZAeIi0WmnI7omB0lfevlTvTHj8HUOKgxg0MUxAqqBqZUnajQ4x3yFD5Xj9yk8JjHlqenm; Iy5o_c91e_visitedfid=14D27; Iy5o_c91e_ulastactivity=2944KZWIlwsgKYP19TQFzb84TSDCYbJE79%2BGj00pkanFK4OZnC5Z; Iy5o_c91e_forum_lastvisit=D_27_1450437371D_14_1450702821; Iy5o_c91e_fid14=1450702422; Iy5o_c91e_sendmail=1; Iy5o_c91e_smile=1D1; Iy5o_c91e_onlineusernum=4832; Iy5o_c91e_sid=eU8pJP; Iy5o_c91e_lastact=1450703025%09home.php%09spacecp; Iy5o_c91e_checkpm=1; CNZZDATA2690073=cnzz_eid%3D1324583947-1442270967-http%253A%252F%252Fbbs.musicool.cn%252F%26ntime%3D1450701440'
         }
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
     header = []
@@ -39,8 +39,11 @@ def make_my_opener(head=None):
 
 def sign_and_comment():
     oper = make_my_opener()
-    op = oper.open('http://bbs.musicool.cn/', timeout=1000)
-    op = oper.open('http://bbs.musicool.cn/forum-14-1.html', timeout=1000)
+    try:
+        op = oper.open('http://bbs.musicool.cn/', timeout=1000)
+        op = oper.open('http://bbs.musicool.cn/forum-14-1.html', timeout=1000)
+    except:
+        return False
     data = op.read()
     data = ungzip(data)
     data = data.decode('gbk')
@@ -53,15 +56,17 @@ def sign_and_comment():
         'formhash': 'b3680929'
     }
     postData = urllib.parse.urlencode(postDict).encode()
-    op = oper.open(url, postData, timeout=1000)
-    data = op.read()
-    data = ungzip(data)
-    data = data.decode('gbk')
+    try:
+        op = oper.open(url, postData, timeout=1000)
+        data = op.read()
+        data = ungzip(data)
+        data = data.decode('gbk')
+    except:
+        return False
     if re.findall(r'非常感谢', data):
         print('回复成功')
         return True
 if __name__ == '__main__':
-    if sign_and_comment():
-        pass
-    else:
-        print('自动登录或回复失败，请检查cookie重试')
+    for i in range(6):
+        if sign_and_comment():
+           break
