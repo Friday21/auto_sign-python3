@@ -26,8 +26,14 @@ def make_my_opener(head=None):
     'Accept-Language': 'en-US,en;q=0.8,zh-Hans-CN;q=0.5,zh-Hans;q=0.3',
     'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko',
     'Accept-Encoding': 'gzip, deflate, sdch',
-    'Cookie': 'Iy5o_c91e_saltkey=k11GB8kS; Iy5o_c91e_lastvisit=1450306120; Iy5o_c91e_auth=e35dpA%2FCKdQLUUiHfy6961JZAeIi0WmnI7omB0lfevlTvTHj8HUOKgxg0MUxAqqBqZUnajQ4x3yFD5Xj9yk8JjHlqenm; Iy5o_c91e_visitedfid=14D27; Iy5o_c91e_ulastactivity=2944KZWIlwsgKYP19TQFzb84TSDCYbJE79%2BGj00pkanFK4OZnC5Z; Iy5o_c91e_forum_lastvisit=D_27_1450437371D_14_1450702821; Iy5o_c91e_fid14=1450702422; Iy5o_c91e_sendmail=1; Iy5o_c91e_smile=1D1; Iy5o_c91e_onlineusernum=4832; Iy5o_c91e_sid=eU8pJP; Iy5o_c91e_lastact=1450703025%09home.php%09spacecp; Iy5o_c91e_checkpm=1; CNZZDATA2690073=cnzz_eid%3D1324583947-1442270967-http%253A%252F%252Fbbs.musicool.cn%252F%26ntime%3D1450701440'
-        }
+    'Cookie': 'Iy5o_c91e_smile=1D1; Iy5o_c91e_saltkey=MaQGIAeq; 
+                Iy5o_c91e_lastvisit=1463318267; 
+                Iy5o_c91e_seccodeSAqY6c2Z0=e14c1cJJHR%2Fs3FzUk3TCh7zcGc2qYfCtP9LOMTfkwIjzWy4l%2BMDKL%2Fq6%2FP
+                %2BJdqX7JhGbLhGvz87l8oguEjhp; Iy5o_c91e_auth=986fHta0EPO20d1kIFcEEFyjjM9tuWodzt6EG%2BVXT0x%2BmIENrwZ8
+                yVyyPhmFUmQm0TtFTrgoDBYKK%2B7aba7wrKDdkH3L; Iy5o_c91e_onlineusernum=4590; Iy5o_c91e_sid=JbzD1T; Iy5o_c
+                91e_ulastactivity=e794PzdvIEZnkEMzctrjy3dCsbV0guAYkTgbYmpAtOa5fM1coqP9; Iy5o_c91e_sendmail=1; Iy5o_c91e_
+                checkpm=1; CNZZDATA2690073=cnzz_eid%3D1142367028-1447427636-http%253A%252F%252Fbbs.musicool.cn%252F%26n
+                time%3D1463317565; Iy5o_c91e_lastact=1463321886%09home.php%09spacecp'}
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
     header = []
     for key, value in head.items():
