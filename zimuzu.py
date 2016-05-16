@@ -73,10 +73,10 @@ def sign(username, password):
     url = 'http://www.zimuzu.tv/user/sign'
     op = opener.open(url)
     data = op.read()
-    data = ungzip(data)
+    # data = ungzip(data)
     # print(data)
-    data = data[20:17000].decode(encoding='UTF-8')
-    print(data)
+    # data = data[20:17000].decode(encoding='UTF-8')
+    # print(data)
     return True
 
 if __name__ == '__main__':
